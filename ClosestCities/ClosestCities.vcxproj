@@ -111,7 +111,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="City.cpp" />
+    <ClCompile Include="CityList.cpp" />
+    <ClCompile Include="Coordinate.cpp" />
+    <ClCompile Include="MenuIO.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="TestCode.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="City.h" />
+    <ClInclude Include="CityList.h" />
+    <ClInclude Include="Coordinate.h" />
+    <ClInclude Include="MenuIO.h" />
+    <ClInclude Include="TestCode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
