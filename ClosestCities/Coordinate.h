@@ -9,6 +9,7 @@ class Coordinate
 private:
 	
 	const int kEndOfLine = 1024;
+	const double kPi = 3.1415927;
 	const double kLatitudeMax = 90.00;
 	const double kLatitudeMin = -90.00;
 	const double kLongitudeMin = -180.00;
@@ -29,5 +30,11 @@ public:
 
 	double getLongitude();
 	void setLongitude(double longitude);
+
+	double getLatitudeRadians();
+
+	double getLongitudeRadians();
+
+	double toRadians(double degrees);
 };
 

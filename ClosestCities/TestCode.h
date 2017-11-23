@@ -1,4 +1,12 @@
 #pragma once
+#include <vector>
+#include <fstream>
+#include <iostream>
+#include <algorithm>
+#include <cmath>
+#include "City.h"
+#include "Coordinate.h"
+#include "CityList.h"
 
 using namespace std;
 
@@ -13,6 +21,8 @@ public:
 	void testCoordinate();
 
 	void testCity();
+
+	void testCityList();
 
 	void testMenuIO();
 };

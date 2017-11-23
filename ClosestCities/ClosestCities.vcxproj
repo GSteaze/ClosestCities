@@ -125,6 +125,9 @@
     <ClInclude Include="MenuIO.h" />
     <ClInclude Include="TestCode.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="TestFile.csv" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

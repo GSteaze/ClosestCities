@@ -15,6 +15,43 @@ City::City(string cityName, string cityCountry, double latitude, double longitud
 	setCityCoordinates(latitude, longitude);
 }
 
+City::City(string cityLine)
+{
+	string tempLine = cityLine;
+	string token = "";
+	string fieldsOfCity[4];
+	int fieldNumber = 0;
+	char delimiter = ',';
+	int start = 0;
+	int end = tempLine.find(delimiter);
+	while (end != string::npos) {
+		token = tempLine.substr(start, (end - start));
+		fieldsOfCity[fieldNumber] = token;
+		fieldNumber++;
+		start = end + 1;
+		end = tempLine.find(delimiter, start);
+	}
+	token = tempLine.substr(start, (end - start));
+	fieldsOfCity[fieldNumber] = token;
+
+	double cityLatitude = 0.0;
+	double cityLongitude = 0.0;
+	for (int index = 0; index < kNumberOfCityFields; index++) {
+		switch (index) {
+		case 0: setCityName(fieldsOfCity[index]);
+			break;
+		case 1: setCityCountry(fieldsOfCity[index]);
+			break;
+		case 2: cityLatitude = stod(fieldsOfCity[index]);
+			break;
+		case 3: cityLongitude = stod(fieldsOfCity[index]);
+			setCityCoordinates(cityLatitude, cityLongitude);
+			break;
+		default: cout << "Invalid field detected" << endl;
+		}
+	}
+}
+
 
 City::~City()
 {

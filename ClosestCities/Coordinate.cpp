@@ -43,7 +43,7 @@ Coordinate::~Coordinate()
 
 
 double Coordinate::getLatitude() {
-	return _latitude;
+	return this->_latitude;
 }
 
 void Coordinate::setLatitude(double latitude) {
@@ -51,9 +51,24 @@ void Coordinate::setLatitude(double latitude) {
 }
 
 double Coordinate::getLongitude() {
-	return _longitude;
+	return this->_longitude;
 }
 
 void Coordinate::setLongitude(double longitude) {
 	_longitude = doubleValidator(longitude, kLongitudeMin, kLongitudeMax, "Longitude");
+}
+
+double Coordinate::getLatitudeRadians()
+{
+	return toRadians(this->_latitude);
+}
+
+double Coordinate::getLongitudeRadians()
+{
+	return toRadians(this->_longitude);
+}
+
+double Coordinate::toRadians(double degrees)
+{
+	return (degrees * kPi) / 180;
 }
