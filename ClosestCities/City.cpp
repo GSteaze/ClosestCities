@@ -42,9 +42,11 @@ City::City(string cityLine)
 			break;
 		case 1: setCityCountry(fieldsOfCity[index]);
 			break;
-		case 2: cityLatitude = stod(fieldsOfCity[index]);
+		case 2: string::size_type sz;
+			cityLatitude = stod(fieldsOfCity[index], &sz);
 			break;
-		case 3: cityLongitude = stod(fieldsOfCity[index]);
+		case 3: string::size_type sz2;
+			cityLongitude = stod(fieldsOfCity[index], &sz2);
 			setCityCoordinates(cityLatitude, cityLongitude);
 			break;
 		default: cout << "Invalid field detected" << endl;
@@ -85,3 +87,4 @@ void City::setCityCoordinates(double latitude, double longitude)
 	_cityCoordinates.setLatitude(latitude);
 	_cityCoordinates.setLongitude(longitude);
 }
+

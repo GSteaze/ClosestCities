@@ -16,6 +16,7 @@ void CityList::fillFromFile(string fileName)
 	ifstream fin;
 	fin.open(fileName);
 	string cityLine = "";
+	getline(fin, cityLine);
 	while (!fin.eof()) {
 		getline(fin, cityLine);
 		City newCity = City(cityLine);
@@ -45,7 +46,38 @@ double CityList::getDistance(City one, City two)
 		sin(differenceLongRadians / 2) * sin(differenceLongRadians / 2);
 	double c = 2 * atan2(sqrt(a), sqrt(1 - a));
 
-	double d = kRadiusOfTheEarthInMeters * c;
+	double d = kRadiusOfTheEarthInKilometers * c;
+	distance = d;
 
 	return distance;
+}
+
+City CityList::getCity(int vectorIndex)
+{
+	return _cityList[vectorIndex];
+}
+
+void CityList::getClosestCities(string cityName)
+{
+	
+	string matchingCityName = "";
+	string cityCountry = "";
+	double cityLatitude = 0.0;
+	double cityLongitude = 0.0;
+
+	for (vector<City>::iterator it = _cityList.begin(); it != _cityList.end(); it++) {
+		if (cityName == (it->getCityName)) {
+			matchingCityName = it->getCityName;
+			cityCountry = it->getCityCountry;
+			Coordinate cityCoordinates = it->getCityCoordinates;
+			cityLatitude = cityCoordinates.getLatitude();
+			cityLongitude = cityCoordinates.getLongitude();
+		}
+	}
+	City selectedCity = City(matchingCityName, cityCountry, cityLatitude, cityLongitude);
+
+	vector<City> closestCities;
+
+	//Need to write code to add and sort cities by distance
+
 }

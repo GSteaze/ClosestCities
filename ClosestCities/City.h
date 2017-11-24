@@ -29,6 +29,5 @@ public:
 	Coordinate getCityCoordinates();
 	void setCityCoordinates(double latitude, double longitude);
 
-
 };
 

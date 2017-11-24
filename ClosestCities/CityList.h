@@ -13,7 +13,7 @@ class CityList
 {
 private:
 
-	const double kRadiusOfTheEarthInMeters = 6371000.00;
+	const double kRadiusOfTheEarthInKilometers = 6371.00;
 
 	vector<City> _cityList;
 
@@ -24,5 +24,11 @@ public:
 	void fillFromFile(string fileName);
 
 	double getDistance(City one, City two);
+
+	City getCity(int vectorIndex);
+
+	void getClosestCities(string cityName);
+
+	void getFarthestCities(string cityName);
 };
 
