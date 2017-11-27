@@ -13,6 +13,8 @@ private:
 	string _cityName;
 	string _cityCountry;
 	Coordinate _cityCoordinates;
+	int _index;
+	double _distanceFromCity;
 
 public:
 	City();
@@ -21,6 +23,7 @@ public:
 	~City();
 
 	string getCityName();
+	string getLowerCaseCityName();
 	void setCityName(string cityName);
 
 	string getCityCountry();
@@ -29,5 +32,11 @@ public:
 	Coordinate getCityCoordinates();
 	void setCityCoordinates(double latitude, double longitude);
 
-};
+	int getIndex();
+	void setIndex(int index);
 
+	double getDistanceFromCity();
+	void setDistanceFromCity(double distanceFromCity);
+
+	bool operator< (City &other);
+};

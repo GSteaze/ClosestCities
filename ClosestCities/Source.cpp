@@ -1,5 +1,6 @@
 #include <iostream>
 #include "TestCode.h"
+#include "MenuIO.h"
 
 using namespace std;
 
@@ -15,6 +16,8 @@ int main() {
 	
 
 	testCode();
+
+	//MenuIO menu = MenuIO();
 
 	system("pause");
 	return 0;

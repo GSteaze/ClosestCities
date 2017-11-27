@@ -126,7 +126,9 @@
     <ClInclude Include="TestCode.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\..\..\Google Drive\School\Fall 2017\C++\Homework\Assignments\HW 7\worldcities.csv" />
     <None Include="TestFile.csv" />
+    <None Include="WorldCities.csv" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

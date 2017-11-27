@@ -51,6 +51,7 @@ void TestCode::testCity() {
 	testCity.setCityCoordinates(36.1867, 94.1288);
 
 	cout << "Springdale : " << testCity.getCityName() << endl
+		<< "springdale : " << testCity.getLowerCaseCityName() << endl
 		<< "USA : " << testCity.getCityCountry() << endl
 		<< "Latitude : " << testCity.getCityCoordinates().getLatitude() << endl
 		<< "Longitude : " << testCity.getCityCoordinates().getLongitude() << endl;
@@ -72,6 +73,10 @@ void TestCode::testCityList()
 
 	CityList testCityList = CityList();
 	testCityList.fillFromFile("TestFile.csv");
+	vector<City> testVector = testCityList.getClosestCitiesByCityName("Aberdeen", 5);
+	for (vector<City>::iterator it = testVector.begin(); it != testVector.end(); it++) {
+		cout << it->getCityName() << endl;
+	}
 	City Springdale = City("Springdale", "USA",36.1867, 94.1288);
 	City Fayetteville = City("Fayetteville", "USA", 36.0822, 94.1719);
 	double testDistance = testCityList.getDistance(Springdale, Fayetteville);

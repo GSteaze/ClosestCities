@@ -53,5 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="TestFile.csv" />
+    <None Include="..\..\..\..\Google Drive\School\Fall 2017\C++\Homework\Assignments\HW 7\worldcities.csv" />
+    <None Include="WorldCities.csv" />
   </ItemGroup>
 </Project>

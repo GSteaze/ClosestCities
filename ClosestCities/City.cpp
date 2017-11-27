@@ -6,6 +6,8 @@ City::City()
 	setCityName("");
 	setCityCountry("");
 	setCityCoordinates(0.0, 0.0);
+	setIndex(0);
+	setDistanceFromCity(0.0);
 }
 
 City::City(string cityName, string cityCountry, double latitude, double longitude)
@@ -63,6 +65,15 @@ string City::getCityName() {
 	return _cityName;
 }
 
+string City::getLowerCaseCityName()
+{
+	string lowerCaseCityName = getCityName();
+	for (int index = 0; index < lowerCaseCityName.size(); index++) {
+		lowerCaseCityName[index] = tolower(lowerCaseCityName[index]);
+	}
+	return lowerCaseCityName;
+}
+
 void City::setCityName(string cityName) {
 	_cityName = cityName;
 }
@@ -87,4 +98,32 @@ void City::setCityCoordinates(double latitude, double longitude)
 	_cityCoordinates.setLatitude(latitude);
 	_cityCoordinates.setLongitude(longitude);
 }
+
+int City::getIndex()
+{
+	return _index;
+}
+
+void City::setIndex(int index)
+{
+	_index = index;
+}
+
+
+
+double City::getDistanceFromCity()
+{
+	return _distanceFromCity;
+}
+
+void City::setDistanceFromCity(double distanceFromCity)
+{
+	_distanceFromCity = distanceFromCity;
+}
+
+bool City::operator<( City &other) {
+		return (_distanceFromCity < other._distanceFromCity);
+}
+
+
 

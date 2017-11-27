@@ -9,6 +9,9 @@ void MenuIO::displayWelcomeMessage()
 
 MenuIO::MenuIO()
 {
+	cities.fillFromFile("WorldCities.csv");
+	displayWelcomeMessage();
+	displayMenu();
 }
 
 
@@ -28,17 +31,67 @@ void MenuIO::displayMenu()
 		int userSelection = intValidator(kMenuOptionMinimum, kMenuOptionMaximum);
 		cout << endl;
 
+		vector<City> cityResults;
+		int indexOrNameForClosest = 0;
+		int indexOrNameForFarthest = 0;
+		int cityIndexForClosest = 0;
+		int cityIndexForFarthest = 0;
+		string cityNameForClosest = "";
+		string cityNameForFarthest = "";
+		int counterForClosest = 0;
+		int counterForFarthest = 0;
 		switch (userSelection) {
 		case 1:
+			indexOrNameForClosest = userSelectsIndexOrCityName();
+			if (indexOrNameForClosest == 1) {
+				cout << "Enter the index of the desired city : ";
+				cityIndexForClosest = intValidator(0, kMaximumIndexNumber);
+				cityResults = cities.getClosestCitiesByCityIndex(cityIndexForClosest, kNumberOfCityResults);
+			}
+			else if (indexOrNameForClosest == 2) {
+				cityNameForClosest = stringValidator("the City Name");
+				cityResults = cities.getClosestCitiesByCityName(cityNameForClosest, kNumberOfCityResults);
+			}
+			cout << "Closest Cities : " << endl;
+			counterForClosest = 1;
+			for (vector<City>::iterator it = cityResults.begin(); it != cityResults.end(); it++) {
+				cout << counterForClosest << ". " << it->getCityName() << endl;
+			}
+			cityResults.clear();
 			break;
 		case 2:
+			indexOrNameForFarthest = userSelectsIndexOrCityName();
+			if (indexOrNameForFarthest == 1) {
+				cout << "Enter the index of the desired city : ";
+				int cityIndex = intValidator(0, kMaximumIndexNumber);
+				cityResults = cities.getFarthestCitiesByCityIndex(cityIndex, kNumberOfCityResults);
+			}
+			else if (indexOrNameForFarthest == 2) {
+				cityNameForFarthest = stringValidator("the City Name");
+				cityResults = cities.getFarthestCitiesByCityName(cityNameForFarthest, kNumberOfCityResults);
+			}
+			cout << "Farthest Cities : " << endl;
+			counterForFarthest = 1;
+			for (vector<City>::iterator it = cityResults.begin(); it != cityResults.end(); it++) {
+				cout << counterForFarthest << ". " << it->getCityName() << endl;
+			}
+			cityResults.clear();
 			break;
-		case 3:
+		case 3: cout << "Program Closing." << endl;
+			isAgain = false;
 			break;
-		default:
+		default: cout << "Invalid Selection." << endl;
 			break;
 		}
 	}
+}
+
+int MenuIO::userSelectsIndexOrCityName() {
+	cout << "Search by : " << endl
+		<< "1. Index" << endl
+		<< "2. Name of City" << endl;
+	int userSelection = intValidator(1, 2);
+	return userSelection;
 }
 
 int MenuIO::intValidator(int min, int max)

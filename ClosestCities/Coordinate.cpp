@@ -4,6 +4,9 @@
 
 double Coordinate::doubleValidator(double value, double min, double max, string valueName)
 {
+	//Test
+	cout << "Value " << value << endl;
+
 	bool isValidInput = (value >= min) && (value <= max);
 
 	while (!isValidInput) {

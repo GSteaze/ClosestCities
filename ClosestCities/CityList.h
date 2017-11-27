@@ -14,6 +14,7 @@ class CityList
 private:
 
 	const double kRadiusOfTheEarthInKilometers = 6371.00;
+	const int kEndOfLine = 1024;
 
 	vector<City> _cityList;
 
@@ -27,8 +28,10 @@ public:
 
 	City getCity(int vectorIndex);
 
-	void getClosestCities(string cityName);
+	vector<City> getClosestCitiesByCityName(string cityName, int numberOfCities);
+	vector<City> getClosestCitiesByCityIndex(int cityIndex, int numberOfCities);
 
-	void getFarthestCities(string cityName);
+	vector<City> getFarthestCitiesByCityName(string cityName, int numberOfCities);
+	vector<City> getFarthestCitiesByCityIndex(int cityIndex, int numberOfCities);
 };
 
