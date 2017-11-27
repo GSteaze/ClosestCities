@@ -44,7 +44,6 @@ void MenuIO::displayMenu()
 		case 1:
 			indexOrNameForClosest = userSelectsIndexOrCityName();
 			if (indexOrNameForClosest == 1) {
-				cout << "Enter the index of the desired city : ";
 				cityIndexForClosest = intValidator(0, kMaximumIndexNumber);
 				cityResults = cities.getClosestCitiesByCityIndex(cityIndexForClosest, kNumberOfCityResults);
 			}

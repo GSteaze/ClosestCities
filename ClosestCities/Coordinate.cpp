@@ -4,9 +4,6 @@
 
 double Coordinate::doubleValidator(double value, double min, double max, string valueName)
 {
-	//Test
-	cout << "Value " << value << endl;
-
 	bool isValidInput = (value >= min) && (value <= max);
 
 	while (!isValidInput) {
@@ -53,12 +50,22 @@ void Coordinate::setLatitude(double latitude) {
 	_latitude = doubleValidator(latitude, kLatitudeMin, kLatitudeMax, "Latitude");
 }
 
+void Coordinate::setDifferenceLatitude(double differenceLatitude)
+{
+	_latitude = differenceLatitude;
+}
+
 double Coordinate::getLongitude() {
 	return this->_longitude;
 }
 
 void Coordinate::setLongitude(double longitude) {
 	_longitude = doubleValidator(longitude, kLongitudeMin, kLongitudeMax, "Longitude");
+}
+
+void Coordinate::setDifferenceLongitude(double differenceLongitude)
+{
+	_longitude = differenceLongitude;
 }
 
 double Coordinate::getLatitudeRadians()

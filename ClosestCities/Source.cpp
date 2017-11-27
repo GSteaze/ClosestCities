@@ -7,17 +7,17 @@ using namespace std;
 
 void testCode() {
 	TestCode test = TestCode();
-	//test.testCoordinate();
-	//test.testCity();
+	test.testCoordinate();
+	test.testCity();
 	test.testCityList();
 }
 
 int main() {
 	
 
-	testCode();
+	//testCode();
 
-	//MenuIO menu = MenuIO();
+	MenuIO menu = MenuIO();
 
 	system("pause");
 	return 0;

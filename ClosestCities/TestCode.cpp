@@ -69,14 +69,45 @@ void TestCode::testCity() {
 
 void TestCode::testCityList()
 {
-	cout << endl << "Test CityList" << endl;
+	cout << endl << "Test CityList" << endl << endl;
 
 	CityList testCityList = CityList();
-	testCityList.fillFromFile("TestFile.csv");
+	//testCityList.fillFromFile("TestFile.csv");
+	testCityList.fillFromFile("WorldCities.csv");
+	
+	for (int index = 0; index < 9; index++) {
+		City testCity = testCityList.getCity(index);
+		cout << "City Name : " << testCity.getCityName() << endl
+			<< "City Country : " << testCity.getCityCountry() << endl
+			<< "City Latitude : " << testCity.getCityCoordinates().getLatitude() << endl
+			<< "City Longitude : " << testCity.getCityCoordinates().getLongitude() << endl
+			<< "City Index : " << testCity.getIndex() << endl;
+	}
+
+	cout << endl << "Closest Cities By Name : " << endl;
 	vector<City> testVector = testCityList.getClosestCitiesByCityName("Aberdeen", 5);
 	for (vector<City>::iterator it = testVector.begin(); it != testVector.end(); it++) {
 		cout << it->getCityName() << endl;
 	}
+
+	cout << endl << "Closest Cities By Index : " << endl;
+	vector<City> testVectorTwo = testCityList.getClosestCitiesByCityIndex(1, 5);
+	for (vector<City>::iterator it = testVectorTwo.begin(); it != testVectorTwo.end(); it++) {
+		cout << it->getCityName() << endl;
+	}
+
+	cout << endl << "Farthest Cities By Name : " << endl;
+	vector<City> testVectorThree = testCityList.getFarthestCitiesByCityName("Aberdeen", 5);
+	for (vector<City>::iterator it = testVectorThree.begin(); it != testVectorThree.end(); it++) {
+		cout << it->getCityName() << endl;
+	}
+
+	cout << endl << "Farthest Cities By Index : " << endl;
+	vector<City> testVectorFour = testCityList.getFarthestCitiesByCityIndex(1, 5);
+	for (vector<City>::iterator it = testVectorFour.begin(); it != testVectorFour.end(); it++) {
+		cout << it->getCityName() << endl;
+	}
+
 	City Springdale = City("Springdale", "USA",36.1867, 94.1288);
 	City Fayetteville = City("Fayetteville", "USA", 36.0822, 94.1719);
 	double testDistance = testCityList.getDistance(Springdale, Fayetteville);

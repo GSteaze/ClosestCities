@@ -20,10 +20,12 @@ void CityList::fillFromFile(string fileName)
 	int counter = 1;
 	while (!fin.eof()) {
 		getline(fin, cityLine);
+		if (!cityLine.empty()) {
 		City newCity = City(cityLine);
 		newCity.setIndex(counter);
 		counter++;
 		_cityList.push_back(newCity);
+		}
 	}
 	fin.close();
 }
@@ -33,11 +35,9 @@ double CityList::getDistance(City one, City two)
 	double distance = 0.0;
 	Coordinate cityOneCoordinate = one.getCityCoordinates();
 	Coordinate cityTwoCoordinate = two.getCityCoordinates();
-	Coordinate differenceOfCoordinates = Coordinate(
-		(cityTwoCoordinate.getLatitude() - cityOneCoordinate.getLatitude()),
-		(cityTwoCoordinate.getLongitude() - cityOneCoordinate.getLongitude())
-	);
-
+	Coordinate differenceOfCoordinates = Coordinate();
+	differenceOfCoordinates.setDifferenceLatitude(cityTwoCoordinate.getLatitude() - cityOneCoordinate.getLatitude());
+	differenceOfCoordinates.setDifferenceLongitude(cityTwoCoordinate.getLongitude() - cityOneCoordinate.getLongitude());
 
 	double latOneRadians = cityOneCoordinate.getLatitudeRadians();
 	double latTwoRadians = cityTwoCoordinate.getLatitudeRadians();
@@ -62,6 +62,10 @@ City CityList::getCity(int vectorIndex)
 
 vector<City> CityList::getClosestCitiesByCityName(string cityName, int numberOfCities)
 {
+	string lowerCaseCityName = cityName;
+	for (int index = 0; index < lowerCaseCityName.size(); index++) {
+		lowerCaseCityName[index] = tolower(lowerCaseCityName[index]);
+	}
 
 	string matchingCityName = "";
 	string cityCountry = "";
@@ -69,7 +73,7 @@ vector<City> CityList::getClosestCitiesByCityName(string cityName, int numberOfC
 	double cityLongitude = 0.0;
 
 	for (vector<City>::iterator it = _cityList.begin(); it != _cityList.end(); it++) {
-		if (cityName == (it->getCityName())) {
+		if (lowerCaseCityName == (it->getLowerCaseCityName())) {
 			matchingCityName = it->getCityName();
 			cityCountry = it->getCityCountry();
 			Coordinate cityCoordinates = it->getCityCoordinates();
@@ -170,13 +174,18 @@ vector<City> CityList::getClosestCitiesByCityIndex(int cityIndex, int numberOfCi
 
 vector<City> CityList::getFarthestCitiesByCityName(string cityName, int numberOfCities)
 {
+	string lowerCaseCityName = cityName;
+	for (int index = 0; index < lowerCaseCityName.size(); index++) {
+		lowerCaseCityName[index] = tolower(lowerCaseCityName[index]);
+	}
+
 	string matchingCityName = "";
 	string cityCountry = "";
 	double cityLatitude = 0.0;
 	double cityLongitude = 0.0;
 
 	for (vector<City>::iterator it = _cityList.begin(); it != _cityList.end(); it++) {
-		if (cityName == (it->getCityName())) {
+		if (lowerCaseCityName == (it->getLowerCaseCityName())) {
 			matchingCityName = it->getCityName();
 			cityCountry = it->getCityCountry();
 			Coordinate cityCoordinates = it->getCityCoordinates();

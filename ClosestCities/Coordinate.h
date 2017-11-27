@@ -27,9 +27,11 @@ public:
 
 	double getLatitude();
 	void setLatitude(double latitude);
+	void setDifferenceLatitude(double differenceLatitude);
 
 	double getLongitude();
 	void setLongitude(double longitude);
+	void setDifferenceLongitude(double differenceLongitude);
 
 	double getLatitudeRadians();
 
