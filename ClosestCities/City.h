@@ -38,5 +38,23 @@ public:
 	double getDistanceFromCity();
 	void setDistanceFromCity(double distanceFromCity);
 
-	bool operator< (City &other);
+
+	bool operator< (City &rhs) {
+		return _distanceFromCity < rhs.getDistanceFromCity();
+	}
+	bool operator==(City &rhs) {
+		return _distanceFromCity == rhs.getDistanceFromCity();
+	}
+
+	City& City::operator=(City &rhs) {
+		if (this != &rhs) {
+			this->_cityName = rhs._cityName;
+			this->_cityCountry = rhs._cityCountry;
+			double latitude = rhs._cityCoordinates.getLatitude();
+			double longitude = rhs._cityCoordinates.getLongitude();
+			this->setCityCoordinates(latitude, longitude);
+			this->_distanceFromCity = rhs._distanceFromCity;
+		}
+		return *this;
+	}
 };

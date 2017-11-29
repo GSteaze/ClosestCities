@@ -121,9 +121,5 @@ void City::setDistanceFromCity(double distanceFromCity)
 	_distanceFromCity = distanceFromCity;
 }
 
-bool City::operator<( City &other) {
-		return (_distanceFromCity < other._distanceFromCity);
-}
-
 
 

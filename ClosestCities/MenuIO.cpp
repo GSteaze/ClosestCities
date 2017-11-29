@@ -45,16 +45,17 @@ void MenuIO::displayMenu()
 			indexOrNameForClosest = userSelectsIndexOrCityName();
 			if (indexOrNameForClosest == 1) {
 				cityIndexForClosest = intValidator(0, kMaximumIndexNumber);
-				cityResults = cities.getClosestCitiesByCityIndex(cityIndexForClosest, kNumberOfCityResults);
+				cityResults = cities.getClosestCitiesByCityIndex(cityIndexForClosest, kNumberOfCityResults + 1);
 			}
 			else if (indexOrNameForClosest == 2) {
 				cityNameForClosest = stringValidator("the City Name");
-				cityResults = cities.getClosestCitiesByCityName(cityNameForClosest, kNumberOfCityResults);
+				cityResults = cities.getClosestCitiesByCityName(cityNameForClosest, kNumberOfCityResults + 1);
 			}
 			cout << "Closest Cities : " << endl;
 			counterForClosest = 1;
-			for (vector<City>::iterator it = cityResults.begin(); it != cityResults.end(); it++) {
+			for (vector<City>::iterator it = cityResults.begin() + 1; it != cityResults.end(); it++) {
 				cout << counterForClosest << ". " << it->getCityName() << endl;
+				counterForClosest++;
 			}
 			cityResults.clear();
 			break;
@@ -73,6 +74,7 @@ void MenuIO::displayMenu()
 			counterForFarthest = 1;
 			for (vector<City>::iterator it = cityResults.begin(); it != cityResults.end(); it++) {
 				cout << counterForFarthest << ". " << it->getCityName() << endl;
+				counterForFarthest++;
 			}
 			cityResults.clear();
 			break;

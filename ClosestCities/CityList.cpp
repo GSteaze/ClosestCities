@@ -87,7 +87,7 @@ vector<City> CityList::getClosestCitiesByCityName(string cityName, int numberOfC
 		it->setDistanceFromCity(getDistance(selectedCity, *it));
 	}
 
-	//sort(_cityList.begin(), _cityList.end());
+	sort(_cityList.begin(), _cityList.end());
 
 	vector<City> closestCities;
 	int counter = 0;
@@ -98,41 +98,6 @@ vector<City> CityList::getClosestCitiesByCityName(string cityName, int numberOfC
 	}
 
 	return closestCities;
-
-
-
-	//struct indexAndDistance{
-	//	int index;
-	//	double distance;
-	//};
-
-	//vector<indexAndDistance> closestCities;
-
-	//for (vector<City>::iterator it = _cityList.begin(); it != _cityList.end(); it++) {
-	//	indexAndDistance currentCity;
-	//	currentCity.index = it->getIndex();
-	//	currentCity.distance = it->getDistanceFromCity();
-	//	closestCities.push_back(currentCity);
-	//}
-
-	//sort(closestCities.begin(), closestCities.end());
-	
-	//for (vector<City>::iterator it = _cityList.begin(); it != _cityList.end(); it++) {
-	//	it->setDistanceFromCity(getDistance(selectedCity, *it));
-	//	for (vector<City>::iterator itTwo = closestCities.begin(); itTwo != closestCities.end(); itTwo++) {
-	//		if (closestCities.empty()) {
-	//			closestCities.push_back(*it);
-	//		}
-	//		else if (it->getDistanceFromCity() > itTwo->getDistanceFromCity()) {
-	//			closestCities.
-	//		}
-	//	}
-	//}
-	
-
-
-	//sort(_cityList.begin(), _cityList.end(), [](City lhs, City rhs) {return lhs.getDistanceFromCity() < rhs.getDistanceFromCity(); });
-
 }
 
 vector<City> CityList::getClosestCitiesByCityIndex(int cityIndex, int numberOfCities)
@@ -158,7 +123,7 @@ vector<City> CityList::getClosestCitiesByCityIndex(int cityIndex, int numberOfCi
 		it->setDistanceFromCity(getDistance(selectedCity, *it));
 	}
 
-	//sort(_cityList.begin(), _cityList.end());
+	sort(_cityList.begin(), _cityList.end());
 
 	vector<City> closestCities;
 	int counter = 0;
@@ -199,7 +164,7 @@ vector<City> CityList::getFarthestCitiesByCityName(string cityName, int numberOf
 		it->setDistanceFromCity(getDistance(selectedCity, *it));
 	}
 
-	//sort(_cityList.begin(), _cityList.end());
+	sort(_cityList.begin(), _cityList.end());
 
 	vector<City> closestCities;
 	int counter = 0;
@@ -234,7 +199,7 @@ vector<City> CityList::getFarthestCitiesByCityIndex(int cityIndex, int numberOfC
 		it->setDistanceFromCity(getDistance(selectedCity, *it));
 	}
 
-	//sort(_cityList.begin(), _cityList.end());
+	sort(_cityList.begin(), _cityList.end());
 
 	vector<City> closestCities;
 	int counter = 0;
